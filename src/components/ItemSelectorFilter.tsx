@@ -1,17 +1,17 @@
-import { Input } from '../../shared/ui/input/Input';
-import { Select } from '../../shared/ui/dropdown/Dropdown';
-import { useItemSelector } from '../../context/item-selector/ItemSelectorContext';
-import type { ElementNumberFilter } from '../../context/item-selector/ItemSelectorTypes';
-import { useEffect } from 'react';
+import { Input } from '../shared/ui/input/Input';
+import { Select } from '../shared/ui/dropdown/Dropdown';
+import { useItemSelector } from '../context/item-selector/ItemSelectorContext';
+import type { ElementNumberFilter } from '../context/item-selector/ItemSelectorTypes';
+import { FILTER_OPTIONS } from '../shared/constants';
 
 const filterOptions = [
-  { label: 'No filter', value: 'all' },
-  { label: '> 100', value: 'gt-100' },
-  { label: '> 2500', value: 'gt-2500' },
-  { label: '> 10000', value: 'gt-10000' },
+  { label: 'No filter', value: FILTER_OPTIONS.ALL },
+  { label: '> 100', value: FILTER_OPTIONS.GT_100 },
+  { label: '> 2500', value: FILTER_OPTIONS.GT_2500 },
+  { label: '> 10000', value: FILTER_OPTIONS.GT_10000 },
 ];
 
-export function FilterBar() {
+export function ItemSelectorFilter() {
   const {
     searchValue,
     elementNumberFilter,
@@ -19,14 +19,10 @@ export function FilterBar() {
     setElementNumberFilter,
   } = useItemSelector();
 
-  useEffect(() => {
-    console.log(searchValue);
-  }, [searchValue]);
-
   return (
     <div className="widget-filter">
       <div className="widget-filter-content">
-        <div className="filter-search">
+        <div className="widget-filter-search">
           <label htmlFor="search">Search</label>
           <Input
             type="text"
@@ -35,9 +31,10 @@ export function FilterBar() {
             onChange={(event) => setSearchValue(event.target.value)}
           />
         </div>
-        <div className="filter-dropdown">
-          <label htmlFor="search">Filter</label>
+        <div className="widget-filter-dropdown">
+          <label htmlFor="element-filter">Filter</label>
           <Select
+            id="element-filter"
             options={filterOptions}
             value={elementNumberFilter}
             onChange={(event) =>

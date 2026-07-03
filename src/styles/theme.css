@@ -2,46 +2,29 @@
   /* Typography */
   --font-family-base: system-ui, Avenir, Helvetica, Arial, sans-serif;
 
-  /* Colors */
-  --color-heading: #0d0d0d;
+  /* Colors — Text */
+  --color-text-default: #0d0d0d;
   --color-text: #565456;
-  --color-background: #fafafa;
-  --color-muted: #565456;
+  --color-text-inverted: #fdfdfd;
+  --color-text-disabled: #bcbcbc;
 
-  --color-button-bg: #0f1930;
-  --color-button-text: #fdfdfd;
+  /* Colors — Surfaces */
+  --color-bg-base: #fafafa;
+  --color-bg-raised: #ebebeb;
+  --color-bg-subtle: #f5f5f5;
+  --color-bg-hover: #f0f5fa;
+
+  /* Colors — Brand */
+  --color-primary: #0f1930;
+  --color-secondary: #ececec;
   --color-danger: #e1554b;
 
-  --color-table-header-bg: #ebebeb;
-  --color-table-filter-bg: #f5f5f5;
-
-  --color-white: #ffffff;
+  /* Colors — Borders */
   --color-border: #d6d6d6;
-
-  /* Spacing */
-  --spacing-xs: 4px;
-  --spacing-sm: 8px;
-  --spacing-md: 12px;
-  --spacing-lg: 16px;
-  --spacing-xl: 24px;
-
-  /* Border radius */
-  --radius-sm: 4px;
-  --radius-md: 6px;
+  --color-border-strong: #616161;
 
   /* Font sizes */
-  --font-size-sm: 12px;
-  --font-size-md: 14px;
-  --font-size-lg: 18px;
+  --font-size-sm: 0.75rem;
+  --font-size-md: 0.875rem;
+  --font-size-lg: 1.125rem;
 }
-
-/* // #0D0D0D heading
-// #EAEAEA background
-// #565456 text
-
-// #0F1930 button background
-// #FDFDFD button text
-// #E1554B button danger
-
-// #ECECEC table header bg
-// #F5f5f5 table filter bg */

@@ -8,7 +8,6 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: ButtonVariant;
   size?: ButtonSize;
   className?: string;
-  onClick?: () => void;
 };
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(

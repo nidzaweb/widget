@@ -1,6 +1,7 @@
-import type {
-  ItemSelectorAction,
-  ItemSelectorState,
+import {
+  MAX_SELECTED_ITEMS,
+  type ItemSelectorAction,
+  type ItemSelectorState,
 } from './ItemSelectorTypes';
 
 export function itemSelectorReducer(
@@ -8,15 +9,20 @@ export function itemSelectorReducer(
   action: ItemSelectorAction
 ): ItemSelectorState {
   switch (action.type) {
-    case 'OPEN_WIDGET':
+    case 'OPEN_WIDGET': {
+      const isMaxItemsSelected =
+        state.selectedItemIds.length >= MAX_SELECTED_ITEMS;
       return {
         ...state,
         isOpen: true,
+        isMaxItemsSelected,
         draftSelectedItemIds: state.selectedItemIds,
       };
+    }
 
     case 'CLOSE_WIDGET': {
-      const isMaxItemsSelected = state.selectedItemIds.length >= 3;
+      const isMaxItemsSelected =
+        state.selectedItemIds.length >= MAX_SELECTED_ITEMS;
       return {
         ...state,
         isMaxItemsSelected,
@@ -31,7 +37,7 @@ export function itemSelectorReducer(
         ? state.draftSelectedItemIds.length + 1
         : state.draftSelectedItemIds.length - 1;
 
-      const isMaxItemsSelected = selectedItemsCount >= 3;
+      const isMaxItemsSelected = selectedItemsCount >= MAX_SELECTED_ITEMS;
 
       if (isMaxItemsSelected && isSelected) return state;
 
@@ -46,7 +52,8 @@ export function itemSelectorReducer(
 
     case 'REMOVE_SELECTED_ITEM': {
       const itemId = action.payload;
-      const isMaxItemsSelected = state.draftSelectedItemIds.length - 1 >= 3;
+      const isMaxItemsSelected =
+        state.draftSelectedItemIds.length - 1 >= MAX_SELECTED_ITEMS;
 
       return {
         ...state,
@@ -80,7 +87,8 @@ export function itemSelectorReducer(
     }
 
     case 'CANCEL_SELECTION': {
-      const isMaxItemsSelected = state.selectedItemIds.length >= 3;
+      const isMaxItemsSelected =
+        state.selectedItemIds.length >= MAX_SELECTED_ITEMS;
 
       return {
         ...state,

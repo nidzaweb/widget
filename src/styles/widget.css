@@ -1,4 +1,4 @@
-.items-summery {
+.items-summary {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -6,7 +6,7 @@
   margin-bottom: 0.5rem;
 }
 
-.items-summery p {
+.items-summary p {
   margin-bottom: 0.25rem;
 }
 
@@ -16,29 +16,12 @@
   gap: 0.5rem;
 }
 
-.chip {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
-  background-color: var(--color-button-bg);
-  color: var(--color-white);
+.icon--dark {
+  color: var(--color-text-default);
 }
 
-.chip-separator {
-  width: 1px;
-  height: 100%;
-  /* todo: add border-muted class */
-  background-color: #616161;
-}
-
-.remove-icon-dark {
-  color: var(--color-heading);
-}
-
-.remove-icon-light {
-  color: var(--color-button-text);
+.icon--light {
+  color: var(--color-text-inverted);
 }
 
 .widget {
@@ -49,60 +32,60 @@
 
 .widget-header {
   border-bottom: 1px solid var(--color-border);
-  background-color: var(--color-table-header-bg);
+  background-color: var(--color-bg-raised);
 }
 
 .widget-header-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 16px;
+  padding: 0.5rem 1rem;
 }
 
 .widget-filter {
-  background-color: var(--color-table-filter-bg);
+  background-color: var(--color-bg-subtle);
   border-bottom: 1px solid var(--color-border);
 }
 
 .widget-filter-content {
   display: flex;
   gap: 3rem;
-  padding: 8px 16px;
+  padding: 0.5rem 1rem;
 }
 
-.filter-search,
-.filter-dropdown {
+.widget-filter-search,
+.widget-filter-dropdown {
   display: flex;
   align-items: center;
   gap: 0.25rem;
 }
 
-.item-list {
-  padding: 4px 0;
+.widget-item-list {
+  padding: 0.25rem 0;
   height: 300px;
   overflow-y: auto;
 }
 
-.item-list .item {
+.widget-item-list .widget-item {
   display: flex;
-  padding: 6px 16px;
+  padding: 0.375rem 1rem;
   gap: 1rem;
   font-weight: 500;
 }
 
-.item.disabled {
-  color: #bcbcbc;
+.widget-item--disabled {
+  color: var(--color-text-disabled);
 }
 
-.item:hover {
-  background-color: #f0f5fa;
+.widget-item:hover {
+  background-color: var(--color-bg-hover);
   transition: 250ms;
 }
 
 .widget-footer {
   border-top: 1px solid var(--color-border);
-  background-color: var(--color-table-filter-bg);
-  padding: 8px 16px;
+  background-color: var(--color-bg-subtle);
+  padding: 0.5rem 1rem;
 }
 
 .widget-footer-content {

@@ -1,18 +1,18 @@
 .input {
-  height: 26px;
-  border: 1px solid #dcdcdc;
-  border-radius: 4px;
+  height: 1.625rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.25rem;
   font: inherit;
   color: inherit;
-  background: var(--color-background);
+  background: var(--color-bg-base);
   outline: none;
-  font-size: 12px;
+  font-size: var(--font-size-sm);
   margin-left: 0.5rem;
   padding: 0 0.5rem;
 }
 
 .input:focus {
-  border-color: #0f1930;
+  border-color: var(--color-primary);
 }
 
 .input:disabled {

@@ -1,6 +1,7 @@
 import {
   createContext,
   useContext,
+  useDeferredValue,
   useMemo,
   useReducer,
   type ReactNode,
@@ -11,9 +12,10 @@ import type {
   ItemSelectorContextValue,
   ItemSelectorState,
 } from './ItemSelectorTypes';
+import { FILTER_OPTIONS } from '../../shared/constants';
 
 const initialState: ItemSelectorState = {
-  isOpen: true,
+  isOpen: false,
   items,
   selectedItemIds: [5, 51],
   draftSelectedItemIds: [5, 51],
@@ -46,8 +48,13 @@ export function ItemSelectorProvider({ children }: ItemSelectorProviderProps) {
     [state.items, state.draftSelectedItemIds]
   );
 
+  const deferredSearchValue = useDeferredValue(state.searchValue);
+  const deferredElementNumberFilter = useDeferredValue(
+    state.elementNumberFilter
+  );
+
   const visibleItems = useMemo(() => {
-    const normalizedSearchValue = state.searchValue.trim().toLowerCase();
+    const normalizedSearchValue = deferredSearchValue.trim().toLowerCase();
 
     return state.items.filter((item) => {
       const matchesSearch = item.label
@@ -55,14 +62,17 @@ export function ItemSelectorProvider({ children }: ItemSelectorProviderProps) {
         .includes(normalizedSearchValue);
 
       const matchesElementNumberFilter =
-        state.elementNumberFilter === 'all' ||
-        (state.elementNumberFilter === 'gt-100' && item.id > 100) ||
-        (state.elementNumberFilter === 'gt-2500' && item.id > 2500) ||
-        (state.elementNumberFilter === 'gt-10000' && item.id > 10000);
+        deferredElementNumberFilter === FILTER_OPTIONS.ALL ||
+        (deferredElementNumberFilter === FILTER_OPTIONS.GT_100 &&
+          item.id > 100) ||
+        (deferredElementNumberFilter === FILTER_OPTIONS.GT_2500 &&
+          item.id > 2500) ||
+        (deferredElementNumberFilter === FILTER_OPTIONS.GT_10000 &&
+          item.id > 10000);
 
       return matchesSearch && matchesElementNumberFilter;
     });
-  }, [state.items, state.searchValue, state.elementNumberFilter]);
+  }, [state.items, deferredSearchValue, deferredElementNumberFilter]);
 
   const value = useMemo<ItemSelectorContextValue>(
     () => ({
@@ -111,4 +121,9 @@ export function ItemSelectorProvider({ children }: ItemSelectorProviderProps) {
   );
 }
 
-export const useItemSelector = () => useContext(ItemSelectorContext);
+export function useItemSelector() {
+  const context = useContext(ItemSelectorContext);
+  if (!context)
+    throw new Error('useItemSelector must be used within ItemSelectorProvider');
+  return context;
+}

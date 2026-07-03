@@ -1,15 +1,15 @@
-import { ItemSelectorTable } from './components/item-selector-table/ItemSelectorTable';
-import { ItemsSummery } from './components/selected-items-summary/ItemsSummery';
-import './styles/global.css';
+import { ItemSelector } from './components/ItemSelector';
+import { ItemSelectorSummary } from './components/ItemSelectorSummary';
 import { useItemSelector } from './context/item-selector/ItemSelectorContext';
+import './styles/global.css';
 
 function App() {
   const { isOpen } = useItemSelector();
 
   return (
     <main className="app">
-      <ItemsSummery />
-      {isOpen && <ItemSelectorTable />}
+      <ItemSelectorSummary />
+      {isOpen && <ItemSelector />}
     </main>
   );
 }

@@ -1,5 +1,7 @@
 import type { Item } from '../../shared/types/item';
 
+export const MAX_SELECTED_ITEMS = 3;
+
 export type ElementNumberFilter = 'all' | 'gt-100' | 'gt-2500' | 'gt-10000';
 
 export type ItemSelectorState = {

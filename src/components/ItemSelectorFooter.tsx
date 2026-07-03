@@ -1,8 +1,8 @@
-import { useItemSelector } from '../../context/item-selector/ItemSelectorContext';
-import { Button } from '../../shared/ui/button/Button';
-import SelectedItems from '../selected-items-summary/SelectedItems';
+import { useItemSelector } from '../context/item-selector/ItemSelectorContext';
+import { Button } from '../shared/ui/button/Button';
+import { ChipList } from './ChipList';
 
-export function WidgetFooter() {
+export function ItemSelectorFooter() {
   const {
     draftSelectedItems,
     saveSelection,
@@ -13,7 +13,7 @@ export function WidgetFooter() {
     <div className="widget-footer">
       <div className="widget-footer-content">
         Current selected items:
-        <SelectedItems items={draftSelectedItems} action={toggleDraftItem} />
+        <ChipList items={draftSelectedItems} action={toggleDraftItem} />
       </div>
       <div className="widget-footer-actions">
         <Button variant="primary" size="md" onClick={saveSelection}>
