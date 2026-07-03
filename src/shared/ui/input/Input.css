@@ -1,0 +1,21 @@
+.input {
+  height: 26px;
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+  font: inherit;
+  color: inherit;
+  background: var(--color-background);
+  outline: none;
+  font-size: 12px;
+  margin-left: 0.5rem;
+  padding: 0 0.5rem;
+}
+
+.input:focus {
+  border-color: #0f1930;
+}
+
+.input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
